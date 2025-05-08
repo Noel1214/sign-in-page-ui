@@ -6,7 +6,7 @@ export default function Home() {
     <div className="flex">
       <div className="">
         <Image
-          src="/flowers.jpg"
+          src="/flowers.avif"
           alt="Image"
           className="h-screen w-[50vw]"
           width={800}
