@@ -9,8 +9,9 @@ export default function Home() {
           src="/flowers.avif"
           alt="Image"
           className="h-screen w-[50vw]"
-          width={800}
-          height={500}
+          width={1000}
+          height={1000}
+          loading="eager"
         />
       </div>
       <div className="w-[50vw] flex flex-col">
