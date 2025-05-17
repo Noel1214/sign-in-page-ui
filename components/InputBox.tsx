@@ -6,8 +6,14 @@ import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const router = useRouter();
-  const { setname, setgmail, setpassword, name, gmail, password } = useContext(Context);
+  const context = useContext(Context);
 
+  if(!context){
+    return <div>Loading...</div>
+  }
+
+  const { setname, setgmail, setpassword, name, gmail, password } = context;
+  
   const handleSignUp = () => {
     if(name === "") return;
     if(gmail === "") return;
@@ -35,7 +41,6 @@ export default function LoginPage() {
                 id="name"
                 name="name"
                 type="text"
-                required
                 className="mt-1 block w-full px-3 py-1 border border-gray-300 rounded-xl focus:outline-none"
                 onChange={(e) => setname(e.target.value)}
               />
@@ -53,7 +58,6 @@ export default function LoginPage() {
                 name="email"
                 type="email"
                 autoComplete="email"
-                required
                 className="mt-1 block w-full px-3 py-1 border border-gray-300 rounded-xl focus:outline-none"
                 onChange={(e) => setgmail(e.target.value)}
               />
@@ -71,7 +75,6 @@ export default function LoginPage() {
                 name="password"
                 type="password"
                 autoComplete="current-password"
-                required
                 className="mt-1 block w-full px-3 py-1 border border-gray-300 rounded-xl focus:outline-none"
                 onChange={(e) => setpassword(e.target.value)}
               />
@@ -82,7 +85,6 @@ export default function LoginPage() {
                 id="agreeToTerms"
                 name="agreeToTerms"
                 type="checkbox"
-                required
                 className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
               />
               <label
