@@ -5,7 +5,13 @@ import React, { useContext } from "react";
 import { GoChevronRight } from "react-icons/go";
 
 const page = () => {
-  const { name, gmail } = useContext(Context);
+  const context = useContext(Context);
+
+  if(!context){
+    return <div>Loading...</div>
+  }
+
+  const {name, gmail } = context;
 
   return (
     <div className="flex">
