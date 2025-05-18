@@ -8,18 +8,27 @@ export default function LoginPage() {
   const router = useRouter();
   const context = useContext(Context);
 
-  if(!context){
-    return <div>Loading...</div>
+  if (!context) {
+    return <div>Loading...</div>;
   }
 
-  const { setname, setgmail, setpassword, name, gmail, password } = context;
-  
-  const handleSignUp = () => {
-    if(name === "") return;
-    if(gmail === "") return;
-    if(password === "") return;
+  const {
+    setname,
+    setgmail,
+    setpassword,
+    name,
+    gmail,
+    password,
+    agreeToTerms,
+    setagreeToTerms,
+  } = context;
+  console.log(agreeToTerms);
 
-    router.push("/home")
+  const handleSignUp = () => {
+    // if(name === "") return;
+    // if(gmail === "") return;
+    // if(password === "") return;
+    router.push("/home");
   };
 
   return (
@@ -31,15 +40,10 @@ export default function LoginPage() {
         <form className="space-y-6">
           <div className="space-y-7">
             <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-black"
-              >
+              <label className="block text-sm font-medium text-black">
                 Full Name
               </label>
               <input
-                id="name"
-                name="name"
                 type="text"
                 className="mt-1 block w-full px-3 py-1 border border-gray-300 rounded-xl focus:outline-none"
                 onChange={(e) => setname(e.target.value)}
@@ -47,32 +51,20 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-black"
-              >
+              <label className="block text-sm font-medium text-black">
                 Email address
               </label>
               <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
+                type="text"
                 className="mt-1 block w-full px-3 py-1 border border-gray-300 rounded-xl focus:outline-none"
                 onChange={(e) => setgmail(e.target.value)}
               />
             </div>
-
             <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-black"
-              >
+              <label className="block text-sm font-medium text-black">
                 Password
               </label>
               <input
-                id="password"
-                name="password"
                 type="password"
                 autoComplete="current-password"
                 className="mt-1 block w-full px-3 py-1 border border-gray-300 rounded-xl focus:outline-none"
@@ -82,15 +74,11 @@ export default function LoginPage() {
 
             <div className="flex items-center">
               <input
-                id="agreeToTerms"
-                name="agreeToTerms"
                 type="checkbox"
+                onChange={(e) => setagreeToTerms(e.target.checked)}
                 className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
               />
-              <label
-                htmlFor="agreeToTerms"
-                className="ml-2 block text-sm text-black"
-              >
+              <label className="ml-2 block text-sm text-black">
                 I agree to the{" "}
                 <Link href="/terms" className="underline hover:text-indigo-500">
                   Terms and policy
@@ -98,17 +86,16 @@ export default function LoginPage() {
               </label>
             </div>
           </div>
-
-          <div>
-            <button
-              type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-800 focus:outline-none hover:cursor-pointer"
-              onClick={handleSignUp}
-            >
-              Sign up
-            </button>
-          </div>
         </form>
+        <div>
+          <button
+            type="submit"
+            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-800 focus:outline-none hover:cursor-pointer"
+            onClick={handleSignUp}
+          >
+            Sign up
+          </button>
+        </div>
       </div>
     </div>
   );
