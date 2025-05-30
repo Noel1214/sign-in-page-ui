@@ -1,20 +1,26 @@
 "use client";
 import { Context } from "@/ContextAPI";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useContext } from "react";
 import { GoChevronRight } from "react-icons/go";
 
 const page = () => {
   const context = useContext(Context);
 
-  if(!context){
-    return <div>Loading...</div>
+  if (!context) {
+    return <div>Loading...</div>;
   }
 
-  const {name, gmail } = context;
+  const { name, gmail } = context;
 
   return (
-    <div className="flex">
+    <div className="flex relative">
+      <div className="absolute top-53 right-30">
+        <Link href="/products">
+          <button className="h-10 px-5 rounded-lg bg-green-500 text-white hover:scale-105 transition-all ease-in-out duration-200">Show Products</button>
+        </Link>
+      </div>
       <div className="">
         <Image
           src="/flowers.avif"
